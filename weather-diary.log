@@ -343,3 +343,26 @@ Caused by: org.hibernate.HibernateException: Unable to determine Dialect without
 2025-11-16 21:59:55 INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
 2025-11-16 21:59:55 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
 2025-11-16 21:59:55 INFO  zerobase.weather.WeatherApplication - Started WeatherApplication in 2.979 seconds (process running for 3.226)
+2025-11-16 22:05:06 INFO  zerobase.weather.WeatherApplication - Starting WeatherApplication using Java 17.0.16 with PID 7816 (C:\Users\rmsdu\Desktop\2\weather_diary_skeleton\build\classes\java\main started by rmsdu in C:\Users\rmsdu\Desktop\2\weather_diary_skeleton)
+2025-11-16 22:05:06 INFO  zerobase.weather.WeatherApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-16 22:05:06 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-16 22:05:06 INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 31 ms. Found 2 JPA repository interfaces.
+2025-11-16 22:05:07 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2025-11-16 22:05:07 INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-11-16 22:05:07 INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-16 22:05:07 INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.15]
+2025-11-16 22:05:07 INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-16 22:05:07 INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 926 ms
+2025-11-16 22:05:07 INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-16 22:05:07 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.13.Final
+2025-11-16 22:05:07 INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+2025-11-16 22:05:07 INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-16 22:05:07 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-16 22:05:07 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@61dd1c3d
+2025-11-16 22:05:07 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-11-16 22:05:08 INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-16 22:05:08 INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-16 22:05:08 WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-16 22:05:08 INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-11-16 22:05:08 INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2025-11-16 22:05:08 INFO  zerobase.weather.WeatherApplication - Started WeatherApplication in 2.961 seconds (process running for 3.21)
