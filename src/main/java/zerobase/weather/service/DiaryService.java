@@ -34,10 +34,9 @@ public class DiaryService {
     private static final String WEATHER_URL =
             "https://api.openweathermap.org/data/2.5/weather?q=Seoul&appid=%s&units=metric&lang=kr";
 
-    /* ------------------------ Create ------------------------ */
+    // =================== Create ===================
     @Transactional
     public void createDiary(LocalDate date, String text) {
-
         DateWeather dateWeather = getDateWeather(date);
 
         Diary diary = new Diary();
@@ -50,7 +49,7 @@ public class DiaryService {
         diaryRepository.save(diary);
     }
 
-    /* ------------------------ Read -------------------------- */
+    // =================== Read =====================
     @Transactional(readOnly = true)
     public List<Diary> readDiary(LocalDate date) {
         return diaryRepository.findAllByDate(date);
@@ -61,7 +60,7 @@ public class DiaryService {
         return diaryRepository.findAllByDateBetween(startDate, endDate);
     }
 
-    /* ------------------------ Update ------------------------ */
+    // =================== Update ===================
     @Transactional
     public void updateDiary(LocalDate date, String text) {
         List<Diary> diaries = diaryRepository.findAllByDate(date);
@@ -72,23 +71,22 @@ public class DiaryService {
         diary.setText(text);
     }
 
-    /* ------------------------ Delete ------------------------ */
+    // =================== Delete ===================
     @Transactional
     public void deleteDiary(LocalDate date) {
         diaryRepository.deleteAllByDate(date);
     }
 
-    /* ------------------------ Weather ----------------------- */
+    // =================== Weather ==================
     private DateWeather getDateWeather(LocalDate date) {
-        List<DateWeather> weatherList = dateWeatherRepository.findAllByDate(date);
-
-        if (!weatherList.isEmpty()) {
-            return weatherList.get(0);
+        List<DateWeather> dateWeathers = dateWeatherRepository.findAllByDate(date);
+        if (!dateWeathers.isEmpty()) {
+            return dateWeathers.get(0);
         }
 
-        DateWeather newWeather = getWeatherFromApi(date);
-        dateWeatherRepository.save(newWeather);
-        return newWeather;
+        DateWeather dateWeather = getWeatherFromApi(date);
+        dateWeatherRepository.save(dateWeather);
+        return dateWeather;
     }
 
     private DateWeather getWeatherFromApi(LocalDate date) {
@@ -110,22 +108,23 @@ public class DiaryService {
             return new DateWeather(date, mainWeather, icon, temperature);
 
         } catch (ParseException e) {
-            throw new RuntimeException("날씨 데이터 파싱 오류", e);
+            log.error("날씨 데이터 파싱 실패", e);
+            throw new RuntimeException("날씨 데이터 파싱 실패", e);
         }
     }
 
     private String getWeatherJson() {
-        RestTemplate rt = new RestTemplate();
+        RestTemplate restTemplate = new RestTemplate();
         URI uri = URI.create(String.format(WEATHER_URL, apiKey));
-        return rt.getForObject(uri, String.class);
+        return restTemplate.getForObject(uri, String.class);
     }
 
-    /* ------------------------ Scheduler --------------------- */
+    // =================== Scheduler =================
     @Scheduled(cron = "0 0 1 * * *")
     @Transactional
     public void saveTodayWeather() {
         LocalDate today = LocalDate.now();
-        DateWeather weather = getWeatherFromApi(today);
-        dateWeatherRepository.save(weather);
+        DateWeather dateWeather = getWeatherFromApi(today);
+        dateWeatherRepository.save(dateWeather);
     }
 }
